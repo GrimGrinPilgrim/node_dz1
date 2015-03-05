@@ -3,9 +3,11 @@ var http = require('http'),
   url =require('url');
 var data = {
   complDate: new Date(),
+  days: ['Воскресенье','Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'],
   monthes:['Января','Февраля','Марта','Апреля','Мая','Июня','Июля','Августа','Сентября','Октября','Ноября','Декабря'],
   day_state:function(){
-    var massage;
+    var massage=0;
+    console.log(data.complDate.getHours())
     switch(true){
       case data.complDate.getHours() >= 5 && data.complDate.getHours() < 11:
         massage = 'Gutten morgen'
@@ -13,13 +15,14 @@ var data = {
       case data.complDate.getHours() >= 11 && data.complDate.getHours() < 16:
         massage = 'Konnichiwa'
       break
-      case data.complDate.getHours() >=16 && data.complDate.getHours() < 22:
+      case data.complDate.getHours() >=16 && data.complDate.getHours() < 25:
         massage = 'Bonsoir'
       break
-      case data.complDate.getHours() >=22 && data.complDate.getHours() < 5:
+      case data.complDate.getHours() >=0 && data.complDate.getHours() < 5:
         massage = 'Доброй ночи'
       break
     }
+    console.log(massage)
     return massage;
   }
 }
@@ -33,11 +36,12 @@ var routes = {
       },
       '/what_date_is_today': function(req,res) {
         var cur_month = data.monthes[data.complDate.getMonth()]
-        var date = data.complDate.getDay()+''+data.complDate.getDate()+' '+cur_month+' '+data.complDate.getFullYear();
+        var cur_day = data.days[data.complDate.getDay()]
+        var date = cur_day+' '+data.complDate.getDate()+' '+cur_month+' '+data.complDate.getFullYear();
         res.end('Сегодня: ' + date);
       },
       '/what_time_is_it': function(req,res) {
-        var time = ''+data.complDate.getHours()+':'+data.complDate.getMinutes()+':'+data.complDate.getSeconds();
+        var time =data.complDate.getHours()+':'+data.complDate.getMinutes()+':'+data.complDate.getSeconds();
         res.end('Сейчас: ' + time);
       }
     }
