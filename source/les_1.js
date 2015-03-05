@@ -33,7 +33,7 @@ var routes = {
       },
       '/what_date_is_today': function(req,res) {
         var cur_month = data.monthes[data.complDate.getMonth()]
-        var date = ''+data.complDate.getDate()+' '+cur_month+' '+data.complDate.getFullYear();
+        var date = data.complDate.getDay()+''+data.complDate.getDate()+' '+cur_month+' '+data.complDate.getFullYear();
         res.end('Сегодня: ' + date);
       },
       '/what_time_is_it': function(req,res) {
