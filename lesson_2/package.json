@@ -1,0 +1,8 @@
+{
+  "name": "lesson2",
+  "dependencies": {
+    "express": "^4.12.2",
+    "fs": "0.0.2",
+    "haml": "^0.4.3"
+  }
+}
