@@ -1,0 +1,8 @@
+extends layout
+block content
+  h3 add a new Marvel heros
+  .form
+    form(action="/add", method="post", enctype="multipart/form-data")
+      input(name="downloaded_file", multiple="multiple", type= "file",value="+")
+      div
+        input(type="submit", value="Add",class="submit")
